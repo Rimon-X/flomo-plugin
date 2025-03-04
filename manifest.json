@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Flomo笔记插件",
+  "version": "1.0.0",
+  "description": "一键将网页内容同步到flomo的Chrome插件",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://flomoapp.com/*",
+    "https://api.openai.com/*",
+    "https://api.siliconflow.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidebar/sidebar.html"
+  }
+}

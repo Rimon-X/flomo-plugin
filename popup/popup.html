@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Flomo笔记</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Flomo笔记</h1>
+      <div class="stats">今日：<span id="today-count">0</span>条</div>
+      <div class="settings-icon" id="settings-icon" title="设置">⚙️</div>
+    </div>
+    
+    <div class="settings-panel" id="settings-panel">
+      <h2>设置</h2>
+      <div class="form-group">
+        <label for="flomo-api">Flomo API</label>
+        <input type="text" id="flomo-api" placeholder="输入Flomo API地址">
+        <div class="help-text">在Flomo网站获取你的API地址</div>
+      </div>
+      <div class="form-group">
+        <label for="ai-api-key">AI API Key</label>
+        <input type="text" id="ai-api-key" placeholder="输入AI API Key">
+        <div class="help-text">输入OpenAI或其他兼容API的密钥，或输入"local"使用本地模式</div>
+      </div>
+      <div class="form-group">
+        <label for="ai-api-url">AI API URL</label>
+        <input type="text" id="ai-api-url" placeholder="输入AI API URL">
+        <div class="help-text">默认使用OpenAI API，也可使用其他兼容的API，或输入"local"使用本地模式</div>
+      </div>
+      <div class="form-group">
+        <label for="debug-mode">调试模式</label>
+        <div class="checkbox-container">
+          <input type="checkbox" id="debug-mode">
+          <span class="help-text">开启后将显示详细的API请求和响应信息，有助于排查问题</span>
+        </div>
+      </div>
+      <div class="button-group">
+        <button id="save-settings">保存</button>
+        <button id="cancel-settings">取消</button>
+      </div>
+    </div>
+
+    <div class="content-form">
+      <div class="form-group">
+        <input type="text" id="title" placeholder="标题">
+        <div class="error-message" id="title-error"></div>
+      </div>
+      
+      <div class="url-display" id="url-display"></div>
+      
+      <div class="smart-title-section">
+        <button id="generate-title">生成智能标题</button>
+        <div class="smart-title" id="smart-title"></div>
+        <button id="use-smart-title" class="hidden">使用此标题</button>
+      </div>
+      
+      <div class="form-group">
+        <textarea id="summary" placeholder="摘要"></textarea>
+        <div class="error-message" id="summary-error"></div>
+      </div>
+      
+      <div class="form-group">
+        <textarea id="thoughts" placeholder="感想"></textarea>
+        <div class="error-message" id="thoughts-error"></div>
+      </div>
+      
+      <div class="form-group tags-group">
+        <div id="tags-display" class="tags-display hidden"></div>
+        <input type="text" id="tags-input" placeholder="标签（多个标签用空格分隔）">
+        <div class="error-message" id="tags-error"></div>
+      </div>
+      
+      <div class="form-group">
+        <button id="submit">保存到Flomo</button>
+      </div>
+      
+      <div id="status" class="status hidden"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
